@@ -23,8 +23,6 @@ def read_data():
 
 while True:
     data = read_data()
-    print(f"Sifra za username iman: {data['iman']}")
-    print(f"Data {data}.")
     bot = "Halt! Welcome to the Doors of Destiny. Should you wish to proceed, you must identify yourself within the Book of Records. "
     print(bot)
     question1 = input("Is your name present in our book?")
@@ -40,15 +38,17 @@ while True:
             "Perfect! I've added you - but I don't come cheap! I charge 100 coins for my services. "
         )
         new_question2 = input("Can you make the deposit?")
-    if new_question2 == "yes":
-        coins = read_coins()
-        username = input("What is your name, then, traveller?")
-        password = input("What is your passphrase?")
-    if username in data and password in data:
-        print(
-            "Welcome through the Doors of Destiny! And it's been a pleasure doing business with you."
-        )
-    else:
-        print(
-            "The passphrase you presented does not match our records! Guards - arrest this intruder!"
-        )
+        if new_question2 == "yes":
+            coins = read_coins()
+            username = input("What is your name, then, traveller?")
+            password = input("What is your passphrase?")
+
+            if (username, password) in data.items():
+
+                print(
+                    "Welcome through the Doors of Destiny! And it's been a pleasure doing business with you."
+                )
+            else:
+                print(
+                    "The passphrase you presented does not match our records! Guards - arrest this intruder!"
+                )
