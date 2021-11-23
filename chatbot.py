@@ -42,8 +42,7 @@ while True:
             coins = read_coins()
             username = input("What is your name, then, traveller?")
             password = input("What is your passphrase?")
-
-            if data.get(username) == password:
+            if data.get(username, None) == password:
 
                 print(
                     "Welcome through the Doors of Destiny! And it's been a pleasure doing business with you."
