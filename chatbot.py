@@ -43,7 +43,7 @@ while True:
             username = input("What is your name, then, traveller?")
             password = input("What is your passphrase?")
 
-            if (username, password) in data.items():
+            if data.get(username) == password:
 
                 print(
                     "Welcome through the Doors of Destiny! And it's been a pleasure doing business with you."
