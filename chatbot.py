@@ -1,7 +1,6 @@
 def read_coins():
     coin_file = open("coins.txt", "r")
     lines = coin_file.readline()
-    print(f"Deposit successful! (You have {lines} coins remaining in your account).")
     coin_file.close()
     return int(lines)
 
@@ -10,9 +9,7 @@ def read_data():
     users = {}
     data_file = open("data.txt")
     for i in data_file:
-        print(f"Line: {i}")
         splitted_string = i.strip().split(":")
-        print(f"Splitted string: {splitted_string}.")
         if len(splitted_string) != 2:
             continue
         username = splitted_string[0]
@@ -21,13 +18,30 @@ def read_data():
     return users
 
 
+def write_coins(new_coins):
+    f = open("coins.txt", "w")
+    f.write(str(new_coins))
+    f.close()
+
+
 while True:
     data = read_data()
     bot = "Halt! Welcome to the Doors of Destiny. Should you wish to proceed, you must identify yourself within the Book of Records. "
     print(bot)
     question1 = input("Is your name present in our book?")
     if question1 == "yes":
-        question2 = input("What is your passphrase?")
+        name = input("What is your name ?")
+        passcode = input("What is your passphrase?")
+        if data.get(name, None) == passcode:
+
+            print(
+                "Welcome through the Doors of Destiny! And it's been a pleasure doing business with you."
+            )
+        else:
+            print(
+                "The passphrase you presented does not match our records! Guards - arrest this intruder!"
+            )
+
         print("Welcome through, peaceful soul!")
     elif question1 == "no":
         print(
@@ -39,15 +53,10 @@ while True:
         )
         new_question2 = input("Can you make the deposit?")
         if new_question2 == "yes":
-            coins = read_coins()
-            username = input("What is your name, then, traveller?")
-            password = input("What is your passphrase?")
-            if data.get(username, None) == password:
-
-                print(
-                    "Welcome through the Doors of Destiny! And it's been a pleasure doing business with you."
-                )
-            else:
-                print(
-                    "The passphrase you presented does not match our records! Guards - arrest this intruder!"
-                )
+            current_number = read_coins()
+            price = 100
+            remaining_number = current_number - price
+            write_coins(remaining_number)
+            print(
+                f"Deposit successful! (You have {remaining_number} coins remaining in your account)."
+            )
