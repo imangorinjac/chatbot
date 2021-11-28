@@ -28,7 +28,7 @@ def update_data():
     traveller = input("What is your name,then,traveller?")
     passphrase = input("What is your passphrase?")
     f = open("data.txt", "a")
-    f.write(traveller + ":" + passphrase)
+    f.write("\n" + traveller + ":" + passphrase)
     f.close()
 
 

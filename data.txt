@@ -1,2 +1,5 @@
 iman:newpassword
-amar:1234adna:noodlesselma:roletne
+amar:1234
+adna:noodles
+selma:roletne
+ajla:bella
