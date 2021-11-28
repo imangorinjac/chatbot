@@ -69,7 +69,7 @@ while True:
                 f"Deposit successful! (You have {remaining_number} coins remaining in your account)."
             )
 
-            data_input = update_data()
+            update_data()
             print(
                 "Welcome through the Doors of Destiny! And it's been a pleasure doing business with you."
             )
