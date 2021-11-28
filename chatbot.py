@@ -24,6 +24,14 @@ def write_coins(new_coins):
     f.close()
 
 
+def update_data():
+    traveller = input("What is your name,then,traveller?")
+    passphrase = input("What is your passphrase?")
+    f = open("data.txt", "a")
+    f.write(traveller + ":" + passphrase)
+    f.close()
+
+
 while True:
     data = read_data()
     bot = "Halt! Welcome to the Doors of Destiny. Should you wish to proceed, you must identify yourself within the Book of Records. "
@@ -59,4 +67,9 @@ while True:
             write_coins(remaining_number)
             print(
                 f"Deposit successful! (You have {remaining_number} coins remaining in your account)."
+            )
+
+            data_input = update_data()
+            print(
+                "Welcome through the Doors of Destiny! And it's been a pleasure doing business with you."
             )
